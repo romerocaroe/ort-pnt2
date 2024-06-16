@@ -1,18 +1,35 @@
+import Login from "../pages/Login.vue"
 
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/IndexPage.vue') }
-    ]
+    redirect: '/login'
   },
-
-  // Always leave this as last one,
-  // but you can also remove it
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+    meta: {
+      requiereAuth: false
+    }
+  },
+  {
+    path: '/home',
+    name: 'Home',
+    component: () => import('pages/Home.vue')
+  },
   {
     path: '/:catchAll(.*)*',
-    component: () => import('pages/ErrorNotFound.vue')
+    name: 'Error',
+    component: () => import('pages/ErrorNotFound.vue'),
+  },
+  {
+    path: '/perfil',
+    name: 'Perfil',
+    component: () => import('pages/Perfil.vue'),
+    meta: {
+      requiereAuth: true
+    }
   }
 ]
 
