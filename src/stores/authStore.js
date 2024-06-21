@@ -10,7 +10,7 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     async login(username,password){
       try {
-        const response = await fetch('https://6665e0afd122c2868e420ea1.mockapi.io/users')
+        const response = await fetch('http://localhost:5000/usuario')
         console.log(response)
         const users = await response.json()
         console.log(users)
@@ -35,20 +35,18 @@ export const useAuthStore = defineStore('auth', {
       localStorage.removeItem('isAuthenticated')
       localStorage.removeItem('isAdmin')
     },
-    async register(username,email,password){
+    async register(username, email, password){
       if(username && email && password){
         try {
           const user = {
               username,
               email,
-              age,
-              avatar,
               password,
           }
 
           console.log('usuario : ', user);
 
-          const response = await axios.post('https://6665e0afd122c2868e420ea1.mockapi.io/users', user)
+          const response = await axios.post('http://localhost:5000/usuario', user)
 
           console.log('RESPONSE: ', response);
           const data = await response.data; 
