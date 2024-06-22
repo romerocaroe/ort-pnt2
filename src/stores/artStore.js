@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { defineStore } from 'pinia';
 
 export const useArtStore = defineStore('art', {
@@ -9,7 +10,7 @@ export const useArtStore = defineStore('art', {
   actions: {
     async getArt(){
       try {
-        const response = await fetch('https://6665e0afd122c2868e420ea1.mockapi.io/arts')
+        const response = await axios.get('http://localhost:5000/obra')
         console.log(response)
         const arts = await response.json()
         console.log(arts)
