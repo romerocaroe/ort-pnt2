@@ -1,20 +1,24 @@
 <template>
   <nav>
-    <a href="#">PNT2</a>
     <q-list bordered separator>
       <q-item clickable v-ripple>
         <q-item-section>
-            <router-link to="/home">Home</router-link>
+            <router-link to="/home" style="color: inherit; text-decoration: none">Home</router-link>
         </q-item-section>
       </q-item>
       <q-item clickable v-ripple>
         <q-item-section>
-            <router-link to="/perfil">Perfil</router-link>
+            <router-link to="/perfil" style="color: inherit; text-decoration: none">Perfil</router-link>
         </q-item-section>
       </q-item>
       <q-item clickable v-ripple>
         <q-item-section>
-            <router-link to="/login">Login</router-link>
+            <router-link to="/login" style="color: inherit; text-decoration: none">Login</router-link>
+        </q-item-section>
+      </q-item>
+      <q-item clickable v-ripple>
+        <q-item-section>
+            <router-link to="/login" @click="logout" style="color: inherit; text-decoration: none">Logout</router-link>
         </q-item-section>
       </q-item>
     </q-list>
@@ -22,8 +26,19 @@
 </template>
 
 <script>
-export default {
+import { useAuthStore } from "../stores/authStore";
 
+export default {
+    name:'Navbar',
+    methods: {
+        async logout(){
+            const authStore = useAuthStore()
+            authStore.logout()
+            if(authStore.isAuthenticated){
+                this.$router.push({name:'Login'})
+            }
+        }
+    }
 }
 </script>
 

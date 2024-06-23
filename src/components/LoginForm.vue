@@ -14,6 +14,7 @@
 
 <script>
 import { useAuthStore } from "../stores/authStore";
+import { Notify } from 'quasar'
 
 export default {
     name:'LoginForm',
@@ -29,6 +30,11 @@ export default {
             await authStore.login(this.username, this.password)
             if(authStore.isAuthenticated){
                 this.$router.push({name:'Home'})
+            } else {
+                Notify.create({
+                    type: 'warning',
+                    message: 'Usuario no encontrado.'
+                })
             }
         }
     },
