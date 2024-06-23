@@ -1,25 +1,28 @@
 <template>
     <div class="row">
         <div v-for="art in arts" :key="art">
-            <div class="col-3 q-ma-md">
+            <div class="col-4 q-ma-sm">
                 <q-card class="my-card" flat bordered>
-                    <q-card-section horizontal>
-                        {{ art.name }}
+                    <q-card-section>
                         <q-img
-                        style="height: 180px; max-width: 180px"
+                        style="height: 250px; max-width: 250px"
                         class="col"
                         :src="art.image"
                         />
 
-                        <q-card-actions vertical class="justify-around q-px-md">
+                        <q-card-actions class="justify-around q-px-sm">
                             <q-btn flat round color="red" icon="favorite" />
                             <q-btn flat round color="accent" icon="bookmark" />
-                            <q-btn flat round color="primary" icon="share" />
+                            <q-btn flat round color="primary" icon="ads_click" />
                         </q-card-actions>
                     </q-card-section>
                 </q-card>
             </div>
         </div>
+        
+        <q-page-sticky position="bottom-right" :offset="[18, 18]">
+            <q-btn fab icon="add" color="primary" />
+        </q-page-sticky>
     </div>
 </template>
 
@@ -32,7 +35,7 @@ export default {
     props:{},
     data(){
         return {
-            arts: []
+            arts: [],
         }
     },
     methods: {
@@ -40,7 +43,6 @@ export default {
             const artStore = useArtStore()
             await artStore.getArt()
             this.arts = artStore.arts
-            console.log(artStore.arts)
         }
     },
     mounted(){

@@ -1,28 +1,30 @@
 import { defineStore } from 'pinia';
+import { Notify } from 'quasar'
 import axios from 'axios'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     isAuthenticated: false,
-    user: null,
-    isAdmin: false
+    user: null
   }),
   actions: {
     async login(username,password){
       try {
-        const response = await fetch('http://localhost:5000/usuario')
-        console.log(response)
-        const users = await response.json()
-        console.log(users)
-        const user = users.find(user => user.username === username && user.password === password)
-
-        if(user) {
+        console.log(username+" - "+password)
+        const response = await axios.get(`${process.env.API_URL}/usuario/${username}-${password}`, {
+            method: 'GET',
+            mode: 'no-cors'
+        })
+        console.log("response")
+        //const users = await response.json()
+        console.log(response.data)
+        if(response.data[0]) {
           this.isAuthenticated = true;
-          this.user = user;
-          this.isAdmin = user.admin;
+          this.user = response.data[0];
           localStorage.setItem('isAuthenticated', 'true')
-          localStorage.setItem('isAdmin', user.admin ? 'true' : 'false')
           localStorage.setItem('user', JSON.stringify(user))
+        } else {
+          return null
         }
       } catch (err){
         console.error('Error -'+err)
@@ -30,10 +32,7 @@ export const useAuthStore = defineStore('auth', {
     },
     logout(){
       this.isAuthenticated = false
-      this.user = nullthis.isAdmin = false
-      this.isAdmin = false
       localStorage.removeItem('isAuthenticated')
-      localStorage.removeItem('isAdmin')
     },
     async register(username, email, password){
       if(username && email && password){
@@ -46,8 +45,11 @@ export const useAuthStore = defineStore('auth', {
 
           console.log('usuario : ', user);
 
-          const response = await axios.post('http://localhost:5000/usuario', user)
-
+          const response = await axios.post(process.env.API_URL+'/usuario', user, {
+            method: 'GET',
+            headers: new Headers({ 'Content-type': 'application/json'}),
+            mode: 'no-cors'
+          })
           console.log('RESPONSE: ', response);
           const data = await response.data; 
 
@@ -64,7 +66,6 @@ export const useAuthStore = defineStore('auth', {
     },
     checkAuth(){
       this.isAuthenticated = localStorage.getItem('isAuthenticated' == true)
-      this.isAdmin = localStorage.getItem('isAdmin') === 'true' ? true : false
       if(this.isAuthenticated){
         this.user = JSON.parse(localStorage.getItem('user'))
       }
