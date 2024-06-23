@@ -16,7 +16,10 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: () => import('pages/Home.vue')
+    component: () => import('pages/Home.vue'),
+    meta: {
+      requiereAuth: true
+    }
   },
   {
     path: '/:catchAll(.*)*',

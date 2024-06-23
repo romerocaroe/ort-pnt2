@@ -38,5 +38,39 @@ export const useArtStore = defineStore('art', {
         console.error('Error -'+err)
       }
     },
+    /* router.patch("/usuario/coleccion/", controllerUsers.addObraToCollection)//TODO: pasar data al body
+router.patch("/usuario/likes/", controllerUsers.addObraToLike)//TODO: pasar data al body
+router.patch("/usuario/coleccion/:idUsuario", collectionController.deleteObraFromCollection) //TODO:
+router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLikes) //TODO: pasar data al body
+ */
+    async addCollectionToUser(idUsuario,idCollection,idObra){
+      try {
+        const collection = await axios.patch(`${process.env.API_URL}/usuario/coleccion`, {
+            method: 'PATCH',
+            mode: 'no-cors',
+            data: {
+              "idUsuario": idUsuario,
+              "idCollection": idCollection,
+              "idObra": idObra
+            }
+        })
+        return 200
+      } catch (err){
+        console.error('Error -'+err)
+        return 500
+      }
+    },
+    async addObra(obra){
+
+    },
+    async addObraToCollection(obra){
+
+    },
+    async deleteCollection(idCollection){
+
+    },
+    async deleteObra(obra){
+
+    }
   }
 })
