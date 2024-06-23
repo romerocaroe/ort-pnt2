@@ -36,6 +36,7 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
+import { useAuthStore } from '../src/stores/authStore'
 import Navbar from './components/Navbar.vue'
 
 export default defineComponent({
@@ -52,6 +53,19 @@ export default defineComponent({
         leftDrawerOpen.value = !leftDrawerOpen.value
       }
     }
+  },
+  methods: {
+    isAuthenticated(){
+      const authStore = useAuthStore()
+      authStore.checkAuth()
+      console.log(authStore.checkAuth())
+      if(!authStore.isAuthenticated){
+          this.$router.push({name:'Login'})
+      }
+    }
+  },
+  mounted(){
+    this.isAuthenticated()
   }
 })
 </script>

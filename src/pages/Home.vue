@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row justify-center align-center">
         <div v-for="art in arts" :key="art">
             <div class="col-4 q-ma-sm">
                 <q-card class="my-card" flat bordered>

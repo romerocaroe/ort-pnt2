@@ -22,7 +22,7 @@ export const useAuthStore = defineStore('auth', {
           this.isAuthenticated = true;
           this.user = response.data[0];
           localStorage.setItem('isAuthenticated', 'true')
-          localStorage.setItem('user', JSON.stringify(user))
+          localStorage.setItem('user', JSON.stringify(this.user))
         } else {
           return null
         }
@@ -32,7 +32,9 @@ export const useAuthStore = defineStore('auth', {
     },
     logout(){
       this.isAuthenticated = false
+      this.user = null
       localStorage.removeItem('isAuthenticated')
+      localStorage.removeItem('user')
     },
     async register(username, email, password){
       if(username && email && password){
