@@ -15,9 +15,9 @@ export const useAuthStore = defineStore('auth', {
             method: 'GET',
             mode: 'no-cors'
         })
-        console.log("response")
+        //console.log("response")
         //const users = await response.json()
-        console.log(response.data)
+        //console.log(response.data)
         if(response.data[0]) {
           this.isAuthenticated = true;
           this.user = response.data[0];
@@ -36,19 +36,21 @@ export const useAuthStore = defineStore('auth', {
       localStorage.removeItem('isAuthenticated')
       localStorage.removeItem('user')
     },
-    async register(username, email, password){
-      if(username && email && password){
+    async register(username, name, lastname, mail, password){
+      if(username && name && lastname && mail && password){
         try {
           const user = {
               username,
-              email,
+              name,
+              lastname,
+              mail,
               password,
           }
 
           console.log('usuario : ', user);
 
           const response = await axios.post(process.env.API_URL+'/usuario', user, {
-            method: 'GET',
+            method: 'POST',
             headers: new Headers({ 'Content-type': 'application/json'}),
             mode: 'no-cors'
           })
@@ -67,8 +69,8 @@ export const useAuthStore = defineStore('auth', {
       }
     },
     checkAuth(){
-      this.isAuthenticated = localStorage.getItem('isAuthenticated' == true)
-      if(this.isAuthenticated){
+      this.isAuthenticated = localStorage.getItem('isAuthenticated' === true)
+      if (this.isAuthenticated){
         this.user = JSON.parse(localStorage.getItem('user'))
       }
     }

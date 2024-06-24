@@ -1,28 +1,42 @@
 <template>
-    <div class="row">
-        <div class="col-12">
-            <div v-for="collection in collections" :key="collection">
-                <div v-for="obra in collection.obras" :key="obra" :style="{border: '1px solid #000'}">
-                    <q-card class="my-card">
-                        <q-img :src="obra.image">
-                            <!-- <div class="absolute-bottom text-subtitle2 text-center">
+  <div class="row">
+    <div class="col-12">
+      <div v-for="collection in collections" :key="collection.id">
+        <h5>Colección: {{ collection.title }}</h5>
+        <div class="row">
+
+        <div
+        class="col-3"
+          v-for="obra in collection.obras"
+          :key="obra.id"
+          :style="{ border: '1px solid #000' }"
+        >
+              <q-card class="my-card">
+                <q-img :src="obra.image">
+                  <!-- <div class="absolute-bottom text-subtitle2 text-center">
                             Title
                             </div> -->
-                        </q-img>
-                    </q-card>
-                </div>
-            </div>
+                </q-img>
+              </q-card>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-import { useArtStore } from '../stores/artStore'
-
+/* import { useArtStore } from '../stores/artStore'
+ */
 export default {
-    name:'Coleccion',
-    components: {},
-    props:{},
+  name: "Coleccion",
+  components: {},
+  props: {
+    collections: {
+      type: Array,
+      required: true,
+    },
+  } /* ,
     data(){
         return {
             collections: [],
@@ -38,10 +52,8 @@ export default {
     },
     mounted(){
         this.getCollections()
-    }
-}
+    } */,
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

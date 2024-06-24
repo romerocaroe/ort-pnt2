@@ -60,11 +60,55 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
         return 500
       }
     },
-    async addObra(obra){
+    async addObra(title, description, author, technique, image, culture, url, division){
+      try {
+        const obra = {
+          title,
+          description,
+          author,
+          technique,
+          image,
+          culture,
+          url,
+          division
+        }
 
+        console.log(obra);
+
+        const response = await axios.post(`${process.env.API_URL}/obra`, obra, {
+          method: 'POST',
+          headers: new Headers({ 'Content-type': 'application/json'}),
+          mode: 'no-cors',
+        })
+        console.log("RESPONSE: ", response);
+        return 200
+      } catch (error) {
+        console.log("Error: " + error);
+        return 500
+      }
     },
     async addObraToCollection(obra){
 
+    },
+    async addObraToLikes(idUsuario, idObra) {
+      try {
+
+        const data = {
+          idUsuario,
+          idObra
+        }
+
+        const response = await axios.patch(`${process.env.API_URL}/usuario/likes`, data, {
+            method: 'PATCH',
+            headers: new Headers({ 'Content-type': 'application/json'}),
+            mode: 'no-cors',
+        })
+        console.log("RESPONSE: ", response);
+        return 200
+      } catch (error) {
+        console.log("Error: " + error);
+        return 500
+      }
     },
     async deleteCollection(idCollection){
 
