@@ -2,7 +2,7 @@
     <div class="row justify-center align-center">
         <div >
           <CardObra    v-for="art in arts" :key="art" :art='art'/>
-            <div class="col-4 q-ma-sm">
+            <div class="col-4 q-ma-sm"> // probe poniendolo en la card y tampoco
 
             </div>
         </div>
@@ -19,7 +19,9 @@ import { useArtStore } from '../stores/artStore'
 
 export default {
     name:'Home',
-    components: {},
+    components: {
+      CardObra
+    },
     props:{},
     data(){
         return {
