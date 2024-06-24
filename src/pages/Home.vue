@@ -1,8 +1,9 @@
 <template>
     <div class="row justify-center align-center">
         <div >
+          
           <CardObra    v-for="art in arts" :key="art" :art='art'/>
-            <div class="col-4 q-ma-sm"> // probe poniendolo en la card y tampoco
+            <div class="col-4 q-ma-sm">
 
             </div>
         </div>
