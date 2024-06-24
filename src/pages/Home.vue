@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row justify-center align-center">
         <div >
           <CardObra    v-for="art in arts" :key="art" :art='art'/>
             <div class="col-4 q-ma-sm">

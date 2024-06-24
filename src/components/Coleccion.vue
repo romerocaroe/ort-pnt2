@@ -31,7 +31,7 @@ export default {
     methods: {
         async getCollections(){
             const artStore = useArtStore()
-            await artStore.getCollections()
+            await artStore.getCollections() //esto obtiene todas las colecciones, debería solo traer las del usuario (buscarlo en auth store this.user)
             this.collections = artStore.collections
             console.log(artStore.collections)
         }

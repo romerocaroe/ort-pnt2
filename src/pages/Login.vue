@@ -40,9 +40,9 @@ export default {
             const authStore = useAuthStore()
             authStore.checkAuth()
             console.log(authStore.checkAuth())
-            /* if(authStore.isAuthenticated){
+            if(authStore.isAuthenticated){
                 this.$router.push({name:'Home'})
-            } */
+            }
         }
 
         onMounted(() => checkAuthorization())

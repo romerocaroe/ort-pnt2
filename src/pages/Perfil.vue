@@ -7,6 +7,7 @@
                 </q-item>
             </q-list>
         </div>
+        <!--TODO: separador-->
         <coleccion />
     </div>
 </template>
