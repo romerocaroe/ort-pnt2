@@ -1,12 +1,23 @@
 <template>
     <div class="row justify-center align-center">
-        <div v-for="art in arts" :key="art">
+        <div v-for="art in arts" :key="art._id">
             <div class="col-4 q-ma-sm">
                 <CardObra :art='art'/>
             </div>
         </div>
         <q-page-sticky position="bottom-right" :offset="[18, 18]">
-            <q-btn fab icon="add" color="primary" />
+            <q-btn fab icon="add" color="primary">
+                <q-menu>
+                    <q-list>
+                        <q-item clickable v-ripple @click="crearObra">
+                            <q-item-section>Crear nueva obra</q-item-section>
+                        </q-item>
+                        <q-item clickable v-ripple @click="crearColeccion">
+                            <q-item-section>Crear nueva colección</q-item-section>
+                        </q-item>
+                    </q-list>
+                </q-menu>
+            </q-btn>
         </q-page-sticky>
     </div>
 </template>
@@ -14,6 +25,7 @@
 <script>
 import CardObra from 'src/components/CardObra.vue';
 import { useArtStore } from '../stores/artStore'
+import { useAuthStore } from 'src/stores/authStore';
 
 export default {
     name:'Home',
@@ -31,7 +43,19 @@ export default {
             const artStore = useArtStore()
             await artStore.getArt()
             this.arts = artStore.arts
+        }, 
+        async addObraToLikes(idObra){
+            const authStore = useAuthStore()
+            const artStore = useArtStore()
+            await artStore.addObraToLikes(authStore.user._id, idObra)
+        },
+        crearObra() {
+            this.$router.push({name: 'CrearObra'})
+        },
+        crearColeccion() {
+            this.$router.push({name: 'CrearColeccion'})
         }
+
     },
     mounted(){
         this.getArt()

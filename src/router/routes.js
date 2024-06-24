@@ -33,6 +33,14 @@ const routes = [
     meta: {
       requiereAuth: true
     }
+  },
+  {
+    path: '/crearObra',
+    name: 'CrearObra',
+    component: () => import('components/CrearObra.vue'),
+    meta: {
+      requiereAuth: true
+    }
   }
 ]
 

@@ -28,7 +28,7 @@ export default route(function (/* { store, ssrContext } */) {
 
   Router.beforeEach((to,from,next) => {
     const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
-    if(to.meta.requireAuth && !isAuthenticated){
+    if(to.meta.requiereAuth && !isAuthenticated){
       next('/login')
     } else {
       next()
