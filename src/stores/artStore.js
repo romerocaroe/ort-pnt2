@@ -59,21 +59,6 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
         return 500
       }
     },
-    async addObra(nuevaObra){
-      try {
-        const obra = await axios.post(`${process.env.API_URL}/coleccion`, {
-            method: 'POST',
-            mode: 'no-cors',
-            data: {
-              "nuevaObra": nuevaObra
-            }
-        })
-        return 200
-      } catch (err){
-        console.error('Error -'+err)
-        return 500
-      }
-    },
     async addColeccion(nuevaColeccion){
       try {
         const obra = await axios.post(`${process.env.API_URL}/obra`, {
@@ -106,7 +91,7 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
         return 500
       }
     },
-    async addObra(title, description, author, technique, image, culture, url, division){
+    async crearObra(title, description, author, technique, image, culture, url, division){
       try {
         const obra = {
           title,
