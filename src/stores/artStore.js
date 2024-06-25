@@ -68,7 +68,9 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
             headers: new Headers({ 'Content-type': 'application/json'}),
             mode: 'no-cors',
         })
-        return nuevaCol._id
+
+        console.log(nuevaCol);
+        return nuevaCol
       } catch (err){
         console.error('Error -'+err)
         return 500
