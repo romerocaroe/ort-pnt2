@@ -16,16 +16,6 @@
                 </q-item>
             </q-list>
         </div>
-        <!--TODO: crear nueva coleccion-->
-        
-        <form @submit.prevent="crearColeccion" class="coleccion-form q-gutter-md">
-            <input v-model="title" type="text" placeholder="Titulo" class="coleccion-input">
-            <input v-model="image" type="text" placeholder="link imagen" class="coleccion-input">
-        
-            <div class="q-gutter-sm justify-center">
-                <q-btn class="full-width" label="Crear" type="submit" color="primary"/>
-            </div>
-        </form>
 
         <!--TODO: separador-->
 

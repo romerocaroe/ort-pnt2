@@ -106,30 +106,19 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
         return 500
       }
     },
-    async addObra(title, description, author, technique, image, culture, url, division){
+    async addObraToLikes(idUsuario,idObra){
       try {
-        const obra = {
-          title,
-          description,
-          author,
-          technique,
-          image,
-          culture,
-          url,
-          division
-        }
-
-        console.log(obra);
-
-        const response = await axios.post(`${process.env.API_URL}/obra`, obra, {
-          method: 'POST',
-          headers: new Headers({ 'Content-type': 'application/json'}),
-          mode: 'no-cors',
+        const result = await axios.patch(`${process.env.API_URL}/usuario/likes/`, {
+            method: 'PATCH',
+            mode: 'no-cors',
+            data: {
+              "idUsuario": idUsuario,
+              "idObra": idObra
+            }
         })
-        console.log("RESPONSE: ", response);
         return 200
-      } catch (error) {
-        console.log("Error: " + error);
+      } catch (err){
+        console.error('Error -'+err)
         return 500
       }
     },
@@ -180,26 +169,6 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
         return 500
       }
      
-    },
-    async addObraToLikes(idUsuario, idObra) {
-      try {
-
-        const data = {
-          idUsuario,
-          idObra
-        }
-
-        const response = await axios.patch(`${process.env.API_URL}/usuario/likes`, data, {
-            method: 'PATCH',
-            headers: new Headers({ 'Content-type': 'application/json'}),
-            mode: 'no-cors',
-        })
-        console.log("RESPONSE: ", response);
-        return 200
-      } catch (error) {
-        console.log("Error: " + error);
-        return 500
-      }
     },
     async deleteCollection(idCollection){
       try {
