@@ -30,7 +30,7 @@ export default {
         const username = ref(null)
         const password = ref(null)
         const currentForm = ref('LoginForm')
-        
+
         function cambiarForm(){
             currentForm.value = currentForm.value === 'LoginForm' ? 'RegisterForm' : 'LoginForm'
         }
@@ -57,5 +57,14 @@ export default {
 </script>
 
 <style>
+.switch-container a {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.switch-container a:hover {
+  text-decoration: underline;
+}
 
 </style>
