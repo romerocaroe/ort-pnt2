@@ -45,14 +45,16 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
  */
     async addCollectionToUser(idUsuario,idCollection){
       try {
-        const collection = await axios.patch(`${process.env.API_URL}/usuario/coleccion/`, {
+        const addCollectionToUser = {
+          idUsuario: idUsuario,
+          idCollection: idCollection
+        }
+        const response = await axios.patch(`${process.env.API_URL}/usuario/coleccion/`, addCollectionToUser, {
             method: 'PATCH',
+            headers: new Headers({ 'Content-type': 'application/json'}),
             mode: 'no-cors',
-            data: {
-              "idUsuario": idUsuario,
-              "idCollection": idCollection
-            }
         })
+        console.log(response);
         return 200
       } catch (err){
         console.error('Error -'+err)
@@ -61,14 +63,12 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
     },
     async addColeccion(nuevaColeccion){
       try {
-        const obra = await axios.post(`${process.env.API_URL}/obra`, {
+        const nuevaCol = await axios.post(`${process.env.API_URL}/coleccion`, nuevaColeccion, {
             method: 'POST',
+            headers: new Headers({ 'Content-type': 'application/json'}),
             mode: 'no-cors',
-            data: {
-              "nuevaColeccion": nuevaColeccion
-            }
         })
-        return 200
+        return nuevaCol._id
       } catch (err){
         console.error('Error -'+err)
         return 500
