@@ -3,7 +3,9 @@
     <h1>Registro</h1>
     <form @submit.prevent="register" class="register-form q-gutter-md">
         <input v-model="username" type="text" placeholder="Username" class="register-input">
-        <input v-model="email" type="text" placeholder="Email" class="register-input">
+        <input v-model="name" type="text" placeholder="Name" class="register-input">
+        <input v-model="lastname" type="text" placeholder="Lastname" class="register-input">
+        <input v-model="mail" type="text" placeholder="Mail" class="register-input">
         <input v-model="password" type="text" placeholder="Password" class="register-input">
     
         <div class="q-gutter-sm justify-center">
@@ -21,14 +23,16 @@ export default {
     data(){
         return{
             username: '',
-            email: '',
+            name: '',
+            lastname: '',
+            mail: '',
             password: ''
         }
     },
     methods:{
         async register() {
             const authStore = useAuthStore();
-            await authStore.register(this.username, this.email, this.password);
+            await authStore.register(this.username, this.name, this.lastname, this.mail, this.password);
             if (authStore.isAuthenticated){
                 this.$router.push({ name: 'Home'})
             }

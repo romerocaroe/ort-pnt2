@@ -1,6 +1,5 @@
 <template>
     <div class="row justify-center">
-        {{ 'HELLO WORLD!' }}
         <div class="form-switch-container col-5">
             <div class="form-container" style="background-color: white;">
                 <component :is="currentForm" />
