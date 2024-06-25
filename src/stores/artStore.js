@@ -45,29 +45,16 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
  */
     async addCollectionToUser(idUsuario,idCollection){
       try {
-        const collection = await axios.patch(`${process.env.API_URL}/usuario/coleccion/`, {
+        const addCollectionToUser = {
+          idUsuario: idUsuario,
+          idCollection: idCollection
+        }
+        const response = await axios.patch(`${process.env.API_URL}/usuario/coleccion/`, addCollectionToUser, {
             method: 'PATCH',
+            headers: new Headers({ 'Content-type': 'application/json'}),
             mode: 'no-cors',
-            data: {
-              "idUsuario": idUsuario,
-              "idCollection": idCollection
-            }
         })
-        return 200
-      } catch (err){
-        console.error('Error -'+err)
-        return 500
-      }
-    },
-    async addObra(nuevaObra){
-      try {
-        const obra = await axios.post(`${process.env.API_URL}/coleccion`, {
-            method: 'POST',
-            mode: 'no-cors',
-            data: {
-              "nuevaObra": nuevaObra
-            }
-        })
+        console.log(response);
         return 200
       } catch (err){
         console.error('Error -'+err)
@@ -76,14 +63,14 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
     },
     async addColeccion(nuevaColeccion){
       try {
-        const obra = await axios.post(`${process.env.API_URL}/obra`, {
+        const nuevaCol = await axios.post(`${process.env.API_URL}/coleccion`, nuevaColeccion, {
             method: 'POST',
+            headers: new Headers({ 'Content-type': 'application/json'}),
             mode: 'no-cors',
-            data: {
-              "nuevaColeccion": nuevaColeccion
-            }
         })
-        return 200
+
+        console.log(nuevaCol);
+        return nuevaCol
       } catch (err){
         console.error('Error -'+err)
         return 500
@@ -106,7 +93,7 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
         return 500
       }
     },
-    async addObra(title, description, author, technique, image, culture, url, division){
+    async crearObra(title, description, author, technique, image, culture, url, division){
       try {
         const obra = {
           title,

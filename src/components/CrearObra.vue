@@ -1,7 +1,7 @@
 <template>
   <div class="register-form-container">
-    <h1>Registro</h1>
-    <form @submit.prevent="register" class="register-form q-gutter-md">
+    <h3>Crear Obra</h3>
+    <form @submit.prevent="crearObra" class="register-form q-gutter-md">
         <input v-model="title" type="text" placeholder="Title" class="register-input" required>
         <input v-model="description" type="text" placeholder="Description" class="register-input" required>
         <input v-model="author" type="text" placeholder="Author" class="register-input" required>
