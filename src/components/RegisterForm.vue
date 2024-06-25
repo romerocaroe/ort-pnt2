@@ -5,7 +5,7 @@
         <input v-model="username" type="text" placeholder="Username" class="register-input">
         <input v-model="name" type="text" placeholder="Name" class="register-input">
         <input v-model="lastname" type="text" placeholder="Lastname" class="register-input">
-        <input v-model="mail" type="text" placeholder="Mail" class="register-input">
+        <input v-model="mail" type="text" placeholder="Email" class="register-input">
         <input v-model="password" type="text" placeholder="Password" class="register-input">
     
         <div class="q-gutter-sm justify-center">
