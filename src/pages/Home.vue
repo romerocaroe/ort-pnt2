@@ -43,11 +43,6 @@ export default {
             const artStore = useArtStore()
             await artStore.getArt()
             this.arts = artStore.arts
-        }, 
-        async addObraToLikes(idObra){
-            const authStore = useAuthStore()
-            const artStore = useArtStore()
-            await artStore.addObraToLikes(authStore.user._id, idObra)
         },
         crearObra() {
             this.$router.push({name: 'CrearObra'})
