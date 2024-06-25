@@ -20,11 +20,13 @@
 
         
     </div>
+    <q-separator/>
     <div class="row">
         <div class="col-12">
             <Coleccion :collections="userCollections"/>
         </div>
     </div>
+    <q-separator/>
     <div class="row">
         <div class="col-12">
             <Likes :likes="likes"/>

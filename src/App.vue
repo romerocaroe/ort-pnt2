@@ -13,10 +13,10 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Pintort Art
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 

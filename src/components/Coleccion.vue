@@ -1,23 +1,33 @@
 <template>
-  <div class="row">
+  <div class="row justify-center align-center">
     <div class="col-12">
-      <div v-for="collection in collections" :key="collection.id">
-        <h5>Colección: {{ collection.title }}</h5>
+      <div v-for="collection in collections" :key="collection.id" 
+      :style="{ border: '1px solid #000' }" class="q-ma-sm">
+        <p class="q-pa-xs">Colección: {{ collection.title }}</p>
         <div class="row">
 
-        <div
-        class="col-3"
-          v-for="obra in collection.obras"
-          :key="obra.id"
-          :style="{ border: '1px solid #000' }"
-        >
-              <q-card class="my-card">
-                <q-img :src="obra.image">
-                  <!-- <div class="absolute-bottom text-subtitle2 text-center">
-                            Title
-                            </div> -->
-                </q-img>
-              </q-card>
+          <div class="col-3 q-pa-xs" v-for="obra in collection.obras" :key="obra.id">
+            <q-card class="my-card">
+              <q-img :src="obra.image">
+                <div class="absolute-bottom text-subtitle1 text-center">
+                  <q-btn class="glossy q-mr-xs" round color="amber-4" icon="edit" />
+                  <q-btn class="glossy q-mr-xs" round color="teal-4" icon="ads_click" />
+                  <q-btn class="glossy" round color="red-4" icon="delete" />
+                </div>
+                <!-- <q-drawer
+                  v-model="drawer"
+                  show-if-above
+
+                  :mini="miniState"
+                  @mouseover="miniState = false"
+                  @mouseout="miniState = true"
+
+                  :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
+                >
+                  
+                </q-drawer> -->
+              </q-img>
+            </q-card>
           </div>
         </div>
       </div>
@@ -26,6 +36,7 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 /* import { useArtStore } from '../stores/artStore'
  */
 export default {
@@ -35,25 +46,9 @@ export default {
     collections: {
       type: Array,
       required: true,
-    },
-  } /* ,
-    data(){
-        return {
-            collections: [],
-        }
-    },
-    methods: {
-        async getCollections(){
-            const artStore = useArtStore()
-            await artStore.getCollections() //esto obtiene todas las colecciones, debería solo traer las del usuario (buscarlo en auth store this.user)
-            this.collections = artStore.collections
-            console.log(artStore.collections)
-        }
-    },
-    mounted(){
-        this.getCollections()
-    } */,
-};
+    }
+  }
+}
 </script>
 
 <style></style>
