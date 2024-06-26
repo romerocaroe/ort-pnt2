@@ -56,20 +56,12 @@ export default {
   methods: {
     async logout() {
       this.authStore.logout();
-      if (!this.authStore.isAuthenticated) {
+      if (!localStorage.getItem("isAuthenticated")) {
         this.$router.push({ name: "Login" });
       }
     },
   },
   watch: {
-    "authStore.isAuthenticated": {
-      handler(nuevoValor) {
-        if (!nuevoValor) {
-          this.$router.push({ name: "Login" });
-        }
-      },
-      immediate: true,
-    },
   },
   created() {
     this.authStore.checkAuth();

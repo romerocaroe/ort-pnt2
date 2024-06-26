@@ -40,6 +40,12 @@ export default {
         }
     },
     methods: {
+        async agregarColleccion(idCollection,idObra){
+            const artStore = useArtStore()
+            const authStore = useAuthStore()
+            const user = authStore.user
+            artStore.addObraToCollectionFromUser(user.idUsuario,idCollection,idObra)
+        },
         async getArt(){
             const artStore = useArtStore()
             await artStore.getArt()

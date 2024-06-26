@@ -14,7 +14,6 @@ export const useArtStore = defineStore('art', {
             method: 'GET',
             mode: 'no-cors'
         })
-        console.log(arts.data)
 
         if(arts.data.length > 0) {
           this.arts = arts.data;
@@ -29,8 +28,6 @@ export const useArtStore = defineStore('art', {
             method: 'GET',
             mode: 'no-cors'
         })
-        console.log(collections.data)
-
         if(collections.data.length > 0) {
           this.collections = collections.data;
         }
@@ -54,8 +51,6 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
             headers: new Headers({ 'Content-type': 'application/json'}),
             mode: 'no-cors',
         })
-        console.log(response);
-        await getCollections()
         return 200
       } catch (err){
         console.error('Error -'+err)
@@ -69,9 +64,6 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
             headers: new Headers({ 'Content-type': 'application/json'}),
             mode: 'no-cors',
         })
-
-        console.log(nuevaCol);
-        await getCollections()
         return nuevaCol
       } catch (err){
         console.error('Error -'+err)
@@ -80,6 +72,11 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
     },
     async addObraToCollectionFromUser(idUsuario,idCollection,idObra){
       try {
+        console.log({
+          "idUsuario": idUsuario,
+          "idCollection": idCollection,
+          "idObra": idObra
+        })
         const result = await axios.patch(`${process.env.API_URL}/usuario/coleccion/obra/`, {
             method: 'PATCH',
             mode: 'no-cors',
@@ -89,8 +86,6 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
               "idObra": idObra
             }
         })
-        
-        await getCollections()
         return 200
       } catch (err){
         console.error('Error -'+err)
@@ -104,7 +99,6 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
             headers: new Headers({ 'Content-type': 'application/json'}),
             mode: 'no-cors',
           })
-          console.log("RESPONSE modificar colección: ", response);
           return 200
         } catch (error) {
           console.log("Error: " + error);
@@ -123,16 +117,11 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
           url,
           division
         }
-
-        console.log(obra);
-
         const response = await axios.post(`${process.env.API_URL}/obra`, obra, {
           method: 'POST',
           headers: new Headers({ 'Content-type': 'application/json'}),
           mode: 'no-cors',
         })
-        console.log("RESPONSE: ", response);
-        await getArt()
         return 200
       } catch (error) {
         console.log("Error: " + error);
@@ -146,7 +135,6 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
           headers: new Headers({ 'Content-type': 'application/json'}),
           mode: 'no-cors',
         })
-        console.log("RESPONSE modificar obra: ", response);
         return 200
       } catch (error) {
         console.log("Error: " + error);
@@ -162,7 +150,6 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
               "idCollection": idCollection
             }
         })
-        await getCollections()
         return 200
       } catch (err){
         console.error('Error -'+err)
@@ -179,7 +166,6 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
               "idObra":idObra
             }
         })
-        await getCollections()
         return 200
       } catch (err){
         console.error('Error -'+err)
@@ -196,7 +182,6 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
               "idObra":idObra
             }
         })
-        await getArt()
         return 200
       } catch (err){
         console.error('Error -'+err)
@@ -217,7 +202,6 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
             headers: new Headers({ 'Content-type': 'application/json'}),
             mode: 'no-cors',
         })
-        await getArt()
         return 200
       } catch (error) {
         console.log("Error: " + error);
@@ -232,7 +216,6 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
             data: {
             }
         })
-        await getCollections()
         return 200
       } catch (err){
         console.error('Error -'+err)
@@ -247,7 +230,6 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
             data: {
             }
         })
-        await getArt()
         return 200
       } catch (err){
         console.error('Error -'+err)
