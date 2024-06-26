@@ -16,9 +16,6 @@
                 </q-item>
             </q-list>
         </div>
-        <!--TODO: separador-->
-
-        
     </div>
     <q-separator/>
     <div class="row">

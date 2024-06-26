@@ -1,12 +1,14 @@
 <template>
-    <div class="register-form-container">
-      <h3>Crear colección</h3>
-      <form @submit.prevent="addCollectionToUser" class="register-form q-gutter-md">
-          <q-input outlined v-model="title" type="text" placeholder="Title" class="register-input" required />
-          <div class="q-gutter-sm justify-center">
-              <q-btn label="Registrar" type="submit" color="primary"/>
-          </div>
-      </form>
+    <div class="row justify-center align-center ">
+        <div class="form-switch-container col-6 q-mt-md q-ma-md q-pa-md rounded-borders" :style="{ border: '1px solid #000' }">
+          <h5>Crear colección</h5>
+          <form @submit.prevent="addCollectionToUser" class="register-form q-gutter-md">
+              <q-input outlined v-model="title" type="text" placeholder="Title" class="register-input" required />
+              <div class="q-gutter-sm justify-center">
+                  <q-btn label="Registrar" type="submit" color="primary"/>
+              </div>
+          </form>
+        </div>
     </div>
   </template>
   

@@ -1,8 +1,7 @@
 <template>
   <div class="row justify-center align-center">
-    <div class="col-12">
-      <div v-for="collection in collections" :key="collection.id" 
-      :style="{ border: '1px solid #000' }" class="q-ma-md q-pa-md rounded-borders">
+    <div class="col-12 q-pa-xs">
+      <div v-for="collection in collections" :key="collection.id" :style="{ border: '1px solid #000' }" class="q-ma-md q-pa-md rounded-borders">
         <p class="q-pa-xs">Colección: {{ collection.title }}</p>
         <div class="row">
           <div class="col-3 q-pa-xs" v-for="obra in collection.obras" :key="obra.id">
@@ -35,9 +34,6 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-/* import { useArtStore } from '../stores/artStore'
- */
 export default {
   name: "Coleccion",
   components: {},
