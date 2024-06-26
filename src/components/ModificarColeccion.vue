@@ -2,7 +2,7 @@
     <div class="register-form-container">
       <h3>Modificar colección</h3>
       <form @submit.prevent="modificarColeccion" class="register-form q-gutter-md">
-          <input v-model="title" type="text" placeholder="{{ this.coleccion.title }}" class="register-input" required>
+          <input v-model="title" type="text" :placeholder="coleccion.title" class="register-input" required>
           <div class="q-gutter-sm justify-center">
               <q-btn label="Modificar" type="submit" color="primary"/>
           </div>
