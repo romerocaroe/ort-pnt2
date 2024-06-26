@@ -49,7 +49,23 @@ const routes = [
     meta: {
       requiereAuth: true
     }
-  }
+  },
+  {
+    path: '/modificarColeccion',
+    name: 'ModificarColeccion',
+    component: () => import('components/ModificarColeccion.vue'),
+    meta: {
+      requiereAuth: true
+    }
+  },
+  {
+    path: '/modificarObra',
+    name: 'ModificarObra',
+    component: () => import('components/ModificarObra.vue'),
+    meta: {
+      requiereAuth: true
+    }
+  },
 ]
 
 export default routes
