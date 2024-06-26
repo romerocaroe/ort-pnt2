@@ -1,12 +1,14 @@
 <template>
-    <div class="register-form-container">
-      <h3>Modificar colección</h3>
-      <form @submit.prevent="modificarColeccion" class="register-form q-gutter-md">
-          <input v-model="title" type="text" :placeholder="coleccion.title" class="register-input" required>
-          <div class="q-gutter-sm justify-center">
-              <q-btn label="Modificar" type="submit" color="primary"/>
-          </div>
-      </form>
+    <div class="row justify-center align-center ">
+        <div class="form-switch-container col-6 q-mt-md q-ma-md q-pa-md rounded-borders" :style="{ border: '1px solid #000' }">
+          <h3>Modificar colección</h3>
+          <form @submit.prevent="modificarColeccion" class="register-form q-gutter-md">
+              <input v-model="title" type="text" :placeholder="coleccion.title" class="register-input" required>
+              <div class="q-gutter-sm justify-center">
+                  <q-btn label="Modificar" type="submit" color="primary"/>
+              </div>
+          </form>
+        </div>
     </div>
   </template>
   

@@ -58,8 +58,7 @@ export default defineComponent({
     isAuthenticated(){
       const authStore = useAuthStore()
       authStore.checkAuth()
-      console.log(authStore.checkAuth())
-      if(!authStore.isAuthenticated){
+      if(!localStorage.getItem("isAuthenticated")){
           this.$router.push({name:'Login'})
       }
     }

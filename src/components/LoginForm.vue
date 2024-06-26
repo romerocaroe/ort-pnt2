@@ -1,9 +1,9 @@
 <template>
-    <div class="login-form-container">
-        <h1>Login</h1>
+    <div class="login-form-container justify-center align-center">
+        <h1 class="text-center">Login</h1>
         <form @submit.prevent="login" class="login-form q-gutter-md">
-            <input v-model="username" type="text" placeholder="Username" class="login-input">
-            <input v-model="password" type="text" placeholder="Password" class="login-input">
+            <q-input outlined v-model="username" type="text" placeholder="Username" class="login-input" />
+            <q-input outlined v-model="password" type="text" placeholder="Password" class="login-input" />
         
             <div class="q-gutter-sm justify-center">
                 <q-btn class="full-width" label="Login" type="submit" color="primary"/>

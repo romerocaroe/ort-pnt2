@@ -1,10 +1,10 @@
 <template>
-    <div class="row justify-center">
-        <div class="form-switch-container col-5">
+    <div class="row justify-center align-center ">
+        <div class="form-switch-container col-4 q-mt-md q-ma-md q-pa-md rounded-borders" :style="{ border: '1px solid #000' }">
             <div class="form-container" style="background-color: white;">
                 <component :is="currentForm" />
             </div>
-            <div class="switch-container">
+            <div class="switch-container q-ma-md">
                 <span v-if="currentForm === 'LoginForm'">No tenes cuenta? <a @click="cambiarForm">Registrate</a></span>
                 <span v-else>Ya tenes cuenta? <a @click="cambiarForm">Inicia Sesion</a></span>
             </div>

@@ -10,7 +10,6 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     async login(username,password){
       try {
-        console.log(username+" - "+password)
         const response = await axios.get(`${process.env.API_URL}/usuario/${username}-${password}`, {
             method: 'GET',
             mode: 'no-cors'

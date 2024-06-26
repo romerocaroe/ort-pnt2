@@ -16,9 +16,6 @@
                 </q-item>
             </q-list>
         </div>
-        <!--TODO: separador-->
-
-        
     </div>
     <q-separator/>
     <div class="row">
@@ -55,6 +52,8 @@ export default {
     methods: {
         async getUser(){
             const authStore = useAuthStore()
+            this.user = authStore.user
+            authStore.login(this.user.username,this.user.password)
             this.user = authStore.user
             this.userCollections = this.user.collections
             this.likes = this.user.likes

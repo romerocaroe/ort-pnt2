@@ -5,19 +5,19 @@
                 <CardObra :art='art'/>
             </div>
         </div>
+        
         <q-page-sticky position="bottom-right" :offset="[18, 18]">
-            <q-btn fab icon="add" color="primary">
-                <q-menu>
-                    <q-list>
-                        <q-item clickable v-ripple @click="crearObra">
-                            <q-item-section>Crear nueva obra</q-item-section>
-                        </q-item>
-                        <q-item clickable v-ripple @click="crearColeccion">
-                            <q-item-section>Crear nueva colección</q-item-section>
-                        </q-item>
-                    </q-list>
-                </q-menu>
-            </q-btn>
+            <q-fab
+                v-model="fabLeft"
+                vertical-actions-align="right"
+                color="primary"
+                glossy
+                icon="keyboard_arrow_up"
+                direction="up"
+            >
+                <q-fab-action label-position="right" color="secondary" @click="crearObra" label="Obra" />
+                <q-fab-action label-position="right" color="purple" @click="crearColeccion" label="Colleción" />
+            </q-fab>
         </q-page-sticky>
     </div>
 </template>
@@ -36,9 +36,16 @@ export default {
     data(){
         return {
             arts: [],
+            fabLeft: true,
         }
     },
     methods: {
+        async agregarColleccion(idCollection,idObra){
+            const artStore = useArtStore()
+            const authStore = useAuthStore()
+            const user = authStore.user
+            artStore.addObraToCollectionFromUser(user.idUsuario,idCollection,idObra)
+        },
         async getArt(){
             const artStore = useArtStore()
             await artStore.getArt()
