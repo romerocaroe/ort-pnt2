@@ -8,14 +8,19 @@
         <q-btn flat round color="primary" icon="ads_click" />
       </q-card-actions>
     </q-card-section>
-  </q-card>
-</template>
+    </q-card>
+<!--     <ObraDetalle :art="art"/>
+ --></template>
 <script>
+import ObraDetalle from "./ObraDetalle.vue";
 import { useArtStore } from "src/stores/artStore";
 import { useAuthStore } from "src/stores/authStore";
 
 export default {
   name: "CardObra",
+  components: {
+    ObraDetalle
+  }, 
   props: {
     art: Object,
   },
