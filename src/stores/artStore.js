@@ -93,6 +93,20 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
         return 500
       }
     },
+    async modificarColeccion(idCollection, coleccionModificada) {
+        try {
+          const response = await axios.put(`${process.env.API_URL}/coleccion/${idCollection}`, coleccionModificada, {
+            method: 'PUT',
+            headers: new Headers({ 'Content-type': 'application/json'}),
+            mode: 'no-cors',
+          })
+          console.log("RESPONSE modificar colección: ", response);
+          return 200
+        } catch (error) {
+          console.log("Error: " + error);
+          return 500
+        }
+    },
     async crearObra(title, description, author, technique, image, culture, url, division){
       try {
         const obra = {
@@ -114,6 +128,20 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
           mode: 'no-cors',
         })
         console.log("RESPONSE: ", response);
+        return 200
+      } catch (error) {
+        console.log("Error: " + error);
+        return 500
+      }
+    },
+    async modificarObra(idObra, obraModificada) {
+      try {
+        const response = await axios.put(`${process.env.API_URL}/obra/${idObra}`, obraModificada, {
+          method: 'PUT',
+          headers: new Headers({ 'Content-type': 'application/json'}),
+          mode: 'no-cors',
+        })
+        console.log("RESPONSE modificar obra: ", response);
         return 200
       } catch (error) {
         console.log("Error: " + error);
