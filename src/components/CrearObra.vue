@@ -2,14 +2,14 @@
   <div class="register-form-container">
     <h3>Crear Obra</h3>
     <form @submit.prevent="crearObra" class="register-form q-gutter-md">
-        <input v-model="title" type="text" placeholder="Title" class="register-input" required>
-        <input v-model="description" type="text" placeholder="Description" class="register-input" required>
-        <input v-model="author" type="text" placeholder="Author" class="register-input" required>
-        <input v-model="technique" type="text" placeholder="Technique" class="register-input" required>
-        <input v-model="image" type="text" placeholder="Image" class="register-input" required>
-        <input v-model="culture" type="text" placeholder="Culture" class="register-input" required>
-        <input v-model="url" type="text" placeholder="Url" class="register-input" required>
-        <input v-model="division" type="text" placeholder="Division" class="register-input" required>
+        <q-input outlined v-model="title" type="text" placeholder="Title" class="register-input" required />
+        <q-input outlined v-model="description" type="text" placeholder="Description" class="register-input" required />
+        <q-input outlined v-model="author" type="text" placeholder="Author" class="register-input" required />
+        <q-input outlined v-model="technique" type="text" placeholder="Technique" class="register-input" required />
+        <q-input outlined v-model="image" type="text" placeholder="Image" class="register-input" required />
+        <q-input outlined v-model="culture" type="text" placeholder="Culture" class="register-input" required />
+        <q-input outlined v-model="url" type="text" placeholder="Url" class="register-input" required />
+        <q-input outlined v-model="division" type="text" placeholder="Division" class="register-input" required />
         <div class="q-gutter-sm justify-center">
             <q-btn label="Registrar" type="submit" color="primary"/>
         </div>

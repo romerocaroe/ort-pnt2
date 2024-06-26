@@ -2,7 +2,7 @@
     <div class="register-form-container">
       <h3>Crear colección</h3>
       <form @submit.prevent="addCollectionToUser" class="register-form q-gutter-md">
-          <input v-model="title" type="text" placeholder="Title" class="register-input" required>
+          <q-input outlined v-model="title" type="text" placeholder="Title" class="register-input" required />
           <div class="q-gutter-sm justify-center">
               <q-btn label="Registrar" type="submit" color="primary"/>
           </div>

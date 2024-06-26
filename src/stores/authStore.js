@@ -8,6 +8,21 @@ export const useAuthStore = defineStore('auth', {
     user: null
   }),
   actions: {
+    async getUserById(){
+      try {
+        const arts = await axios.get(`${process.env.API_URL}/obra`, {
+            method: 'GET',
+            mode: 'no-cors'
+        })
+        console.log(arts.data)
+
+        if(arts.data.length > 0) {
+          this.arts = arts.data;
+        }
+      } catch (err){
+        console.error('Error -'+err)
+      }
+    },
     async login(username,password){
       try {
         console.log(username+" - "+password)

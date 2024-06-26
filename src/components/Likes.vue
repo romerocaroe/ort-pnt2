@@ -1,10 +1,10 @@
 <template>
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 q-ma-md">
       <h5>Likes</h5>
       <div class="row">
         <div
-          class="col-3"
+          class="col-3 q-ma-md q-pa-md rounded-borders"
           v-for="obra in likes"
           :key="obra.id"
           :style="{ border: '1px solid #000' }"
