@@ -35,11 +35,6 @@ export const useArtStore = defineStore('art', {
         console.error('Error -'+err)
       }
     },
-    /* router.patch("/usuario/coleccion/", controllerUsers.addObraToCollection)//TODO: pasar data al body
-router.patch("/usuario/likes/", controllerUsers.addObraToLike)//TODO: pasar data al body
-router.patch("/usuario/coleccion/:idUsuario", collectionController.deleteObraFromCollection) //TODO:
-router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLikes) //TODO: pasar data al body
- */
     async addCollectionToUser(idUsuario,idCollection){
       try {
         const addCollectionToUser = {
@@ -191,12 +186,10 @@ router.patch("/usuario/likes/:idUsuario", collectionController.deleteObraFromLik
     },
     async addObraToLikes(idUsuario, idObra) {
       try {
-
         const data = {
           idUsuario,
           idObra
         }
-
         const response = await axios.patch(`${process.env.API_URL}/usuario/likes`, data, {
             method: 'PATCH',
             headers: new Headers({ 'Content-type': 'application/json'}),

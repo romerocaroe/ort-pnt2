@@ -50,7 +50,7 @@
       <q-card-actions class="justify-around q-px-sm">
         <q-btn flat round color="red" icon="favorite" @click="addObraToLikes(art._id)"/>
         <q-btn flat round color="accent" icon="bookmark" @click="agregarColleccion(art._id)" />
-        <q-btn flat round color="primary" icon="ads_click" @click="detalleObra()"/>
+        <q-btn flat round color="primary" icon="ads_click" @click="detalleObra"/>
       </q-card-actions>
     </q-card-section>
     </q-card>
